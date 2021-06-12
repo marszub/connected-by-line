@@ -7,6 +7,7 @@ public class Obstacle_gen : MonoBehaviour
 
     public GameObject obstacleTemplate;
     public GameObject coinTemplate;
+    
 
     public AllPatterns patternsDB;
 

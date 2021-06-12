@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7035462250158960653}
   - component: {fileID: 7035462250158960652}
   - component: {fileID: 7035462250158960655}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: DeadZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1722337051
+  m_SortingLayer: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 7035462251449025139}
   - component: {fileID: 7035462251449025138}
   - component: {fileID: 7035462251449025137}
+  - component: {fileID: 4001462232212339725}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,6 +208,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035462251449025136}
   m_Enabled: 1
+--- !u!114 &4001462232212339725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035462251449025136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ef6614e8c720546904ff969194217a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backGroundTemplate: {fileID: 7614765532562755185, guid: 0db36c50dda2b2640a3a723c23aedbbe, type: 3}
 --- !u!1 &7035462251591085421
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,8 +295,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -38145397
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 2ab5e2efc7a9a844caf7ddc23c3123e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -428,4 +442,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30db66ce77f2de14eab282709319329c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraVelocity: 5
+  cameraVelocity: 2

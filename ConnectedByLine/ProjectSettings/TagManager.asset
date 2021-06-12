@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -21,12 +23,12 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Chain
   - 
   - Obstacles
-  - 
-  - 
-  - 
+  - Coins
+  - DeadZone
+  - Background
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2557283929
+    locked: 0
+  - name: Obstacles
+    uniqueID: 4256821899
+    locked: 0
+  - name: DeadZone
+    uniqueID: 1722337051
     locked: 0
