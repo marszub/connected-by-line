@@ -49,6 +49,7 @@ namespace Assets.Line
             float h1Axis = Input.GetAxis("P1Horizontal");
             Vector2 player1direction = new Vector2(h1Axis, v1Axis);
             player1.AddForce(player1direction.normalized * settings.player1speed);
+            //player1.AddTorque(player1.transform.up player1direction);
 
             float v2Axis = Input.GetAxis("P2Vertical");
             float h2Axis = Input.GetAxis("P2Horizontal");

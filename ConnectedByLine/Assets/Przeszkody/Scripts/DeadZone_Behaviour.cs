@@ -20,7 +20,7 @@ public class DeadZone_Behaviour : MonoBehaviour
         // Debug.Log("OOOK");
         if (other.tag == "Player")
         {
-            //game_Master game over
+            GameManager.EndGame();
         }
         if (other.tag == "Coin")
         {

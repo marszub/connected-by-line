@@ -8,6 +8,7 @@ public class CoinPlayerBehaviour : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Coin"))
         {
+            GameManager.UpdatePoints(1);
             Destroy(other.gameObject);
         }
     }

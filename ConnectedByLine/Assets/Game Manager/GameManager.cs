@@ -11,37 +11,35 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private int points;
     private int HP;
+    public static int hp { get { return instance.HP; } }
+    public static int score { get { return instance.points; } }
     private GameState state;
 
     void Start()
     {
-        instance = this;
-        instance.StartGame();
-    }
-    
-    public int GetHP()
-    {
-        return HP;
+        if (instance is null)
+            instance = this;
+        else
+            Destroy(gameObject);
+        StartGame();
     }
 
     public void UpdateHP(int update)
     {
         HP = HP - update;
         if(HP < 1 && state == GameState.PlayingTheGame)
-        {
-            state = GameState.Lose;
-            stop?.Invoke();
-        }
+            EndGame();
     }
 
-    public void UpdatePoints(int points)
+    public static void UpdatePoints(int points)
     {
-        this.points += points;
+        instance.points += points;
     }
 
-    public int GetPoints()
+    public static void EndGame()
     {
-        return points;
+        instance.state = GameState.Lose;
+        stop?.Invoke();
     }
 
     private void StartGame()
@@ -50,7 +48,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.PlayingTheGame;
             HP = startHP;
-            points = 100;
+            points = 0;
             Debug.Log("AAA");
         }
     }

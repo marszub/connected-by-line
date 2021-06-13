@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultPlayerSettings
   m_EditorClassIdentifier: 
   player1: {fileID: 2628035931140314289, guid: 8d85e25fde25b5c45897e7266f9099c5, type: 3}
-  player2: {fileID: 2628035931140314289, guid: 8d85e25fde25b5c45897e7266f9099c5, type: 3}
+  player2: {fileID: 2628035931140314289, guid: 3e3ad2f33af4e8a489576c004076a692, type: 3}
   player1pos: {x: -2, y: -2}
   player2pos: {x: 1, y: 1}
   player1speed: 50
