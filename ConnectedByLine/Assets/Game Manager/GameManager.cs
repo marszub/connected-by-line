@@ -5,52 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int startHP = 3;
+    public int startHP;
     public delegate void EventHandler();
     public static event EventHandler stop;
+
     public static GameManager instance;
+
+    public string gameSceneName;
     private int points;
     private int HP;
-    public static int hp { get { return instance.HP; } }
-    public static int score { get { return instance.points; } }
+    public int hp { get { return HP; } }
+    public int score { get { return points; } }
     private GameState state;
+    public GameState gameState { get { return state; } }
 
     void Start()
     {
-        if (instance is null)
-            instance = this;
-        else
-            Destroy(gameObject);
-        StartGame();
+        instance = this;
+        HP = startHP;
+        points = 0;
+        state = GameState.PlayingTheGame;
     }
 
     public void UpdateHP(int update)
     {
-        HP = HP - update;
+        HP -= update;
         if(HP < 1 && state == GameState.PlayingTheGame)
             EndGame();
     }
 
-    public static void UpdatePoints(int points)
+    public void UpdatePoints(int points)
     {
-        instance.points += points;
+        this.points += points;
     }
 
-    public static void EndGame()
+    public void EndGame()
     {
-        instance.state = GameState.Lose;
+        state = GameState.Lose;
         stop?.Invoke();
     }
 
-    private void StartGame()
+    private void Update()
     {
-        if(state == GameState.Lose)
-        {
-            state = GameState.PlayingTheGame;
-            HP = startHP;
-            points = 0;
-            Debug.Log("AAA");
-        }
+        if(Input.GetButton("Submit") && state == GameState.Lose)
+            SceneManager.LoadScene(GameManager.instance.gameSceneName, LoadSceneMode.Single);
+        if (Input.GetKeyDown("escape"))
+            Application.Quit();
     }
 }
 public enum GameState

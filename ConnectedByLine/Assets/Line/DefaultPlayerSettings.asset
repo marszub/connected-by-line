@@ -15,8 +15,11 @@ MonoBehaviour:
   player1: {fileID: 2628035931140314289, guid: 8d85e25fde25b5c45897e7266f9099c5, type: 3}
   player2: {fileID: 2628035931140314289, guid: 3e3ad2f33af4e8a489576c004076a692, type: 3}
   player1pos: {x: -2, y: -2}
-  player2pos: {x: 1, y: 1}
+  player2pos: {x: -2, y: 2}
   player1speed: 50
   player2speed: 50
+  player1angspd: 50
+  player2angspd: 50
   chain: {fileID: 4292571885522993018, guid: f40a13de6dac1b04093faca9bee4dc88, type: 3}
-  chainLength: 40
+  chainLength: 30
+  zero: 0.1

@@ -7,30 +7,36 @@ public class Obstacle_gen : MonoBehaviour
 
     public GameObject obstacleTemplate;
     public GameObject coinTemplate;
-    
 
-    public AllPatterns patternsDB;
+    public List<GameObject> patterns;
+
+    public GameObject background;
+
+    private float backSize = 0;
+    //public AllPatterns patternsDB;
 
     private RectTransform rt;
-    private float nextPatternTrigger;
-    private List<PatternColumns> pattern;
-    private int patternsUsed = 0;
+    private float nextPatternTrigger =0;
+    //private List<PatternColumns> pattern;
     // Start is called before the first frame update
     void Start()
     {
-        if (obstacleTemplate == null)
-            obstacleTemplate = GameObject.FindWithTag("Obstacle");
-        if (coinTemplate == null)
-        {
-            coinTemplate = GameObject.FindWithTag("Coin");
-        }
+        //if (obstacleTemplate == null)
+        //    obstacleTemplate = GameObject.FindWithTag("Obstacle");
+        //if (coinTemplate == null)
+        //{
+          //  coinTemplate = GameObject.FindWithTag("Coin");
+        //}
         
         rt = (RectTransform)gameObject.transform;
         //Instantiate(obstacleTemplate,
         //     gameObject.transform.position + new Vector3(0, (float)(1 * gameObject.transform.localScale.y), 0)
         // + new Vector3(0, (float)(0.5 * obstacleTemplate.transform.localScale.y), 0),
         //   gameObject.transform.rotation);
-        GetRandomPattern();
+
+        backSize = 2*background.GetComponent<SpriteRenderer>().bounds.extents.x;
+
+        //GetRandomPattern();
 
 
     }
@@ -39,52 +45,27 @@ public class Obstacle_gen : MonoBehaviour
     void Update()
     {
         //Instantiate(obstacleTemplate, gameObject.transform.position + new Vector3(0, (float)(0.5 * gameObject.transform.localScale.y), 0) + new Vector3(0, (float)(0.5 * obstacleTemplate.transform.localScale.y), 0), gameObject.transform.rotation);
-        if(nextPatternTrigger<gameObject.transform.position.x)
+        if(nextPatternTrigger+10<gameObject.transform.position.x)
         {
-            if(patternsUsed == pattern.Count-1)
-            {
-                patternsUsed = 0;
-                GetRandomPattern();
-                
-                
-            }
-            GenNextColumn();
+            GenNextPattern();
         }
         
     }
 
-    private void GetRandomPattern()
+    private GameObject GetRandomPattern()
     {
-        pattern = patternsDB.GiveRand();
+        int numb = patterns.Count;
+        int randInd = Random.Range(0, numb);
+        return patterns[randInd];
     }
 
-    private void GenNextColumn()
+    private void GenNextPattern()
     {
-        for(int i =0;i<pattern[patternsUsed].pat_type.Count; i++)
-        {
-            if(pattern[patternsUsed].pat_type[i]=="o")
-            {
-                Instantiate(obstacleTemplate,
-                    gameObject.transform.position + new Vector3(pattern[patternsUsed].pat_vec[i].x, (float)(pattern[patternsUsed].pat_vec[i].y * gameObject.transform.localScale.y), 0)
-                    + new Vector3(0, (float)(0.5 * obstacleTemplate.transform.localScale.y), 0),
-                    gameObject.transform.rotation);
-            }
-            if (pattern[patternsUsed].pat_type[i] == "c")
-            {
-                Instantiate(coinTemplate,
-                    gameObject.transform.position + new Vector3(pattern[patternsUsed].pat_vec[i].x, (float)(pattern[patternsUsed].pat_vec[i].y * gameObject.transform.localScale.y), 0)
-                    + new Vector3(0, (float)(0.5 * coinTemplate.transform.localScale.y), 0),
-                    gameObject.transform.rotation);
-            }
+        GameObject patt = GetRandomPattern();
 
 
-        }
-
-        nextPatternTrigger += pattern[patternsUsed].width;
-
-
-
-        patternsUsed += 1;
+        Instantiate(patt, gameObject.transform.position , gameObject.transform.rotation);
+        nextPatternTrigger += backSize;
 
     }
 }
