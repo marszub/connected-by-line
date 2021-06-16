@@ -6,9 +6,9 @@ public class CoinPlayerBehaviour : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Coin"))
+        if(other.gameObject.CompareTag("Coin") && GameManager.instance.gameState == GameState.PlayingTheGame)
         {
-            GameManager.UpdatePoints(1);
+            GameManager.instance.UpdatePoints(1);
             Destroy(other.gameObject);
         }
     }

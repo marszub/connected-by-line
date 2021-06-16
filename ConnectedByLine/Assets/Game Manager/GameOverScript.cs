@@ -14,19 +14,19 @@ public class GameOverScript : MonoBehaviour
         GameManager.stop += Display;
     }
 
-    void Update()
-    {
-    }
-
     public void NewGameButton()
     {
-        //TU LOADUJE ALE NIE UMIEM
-        //SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        Debug.Log("New Game");
+        SceneManager.LoadScene(GameManager.instance.gameSceneName, LoadSceneMode.Single);
     }
 
     void Display()
     {
         animator.SetTrigger("FadeIn");
-        result.text = GameManager.score.ToString() + " Points!";
+        result.text = GameManager.instance.score.ToString() + " Points!";
+    }
+    private void OnDestroy()
+    {
+        GameManager.stop -= Display;
     }
 }

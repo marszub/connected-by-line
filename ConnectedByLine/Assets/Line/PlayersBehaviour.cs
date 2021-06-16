@@ -45,16 +45,24 @@ namespace Assets.Line
 
         void FixedUpdate()
         {
-            float v1Axis = Input.GetAxis("P1Vertical");
-            float h1Axis = Input.GetAxis("P1Horizontal");
-            Vector2 player1direction = new Vector2(h1Axis, v1Axis);
-            player1.AddForce(player1direction.normalized * settings.player1speed);
-            //player1.AddTorque(player1.transform.up player1direction);
+            if (GameManager.instance.gameState == GameState.PlayingTheGame)
+            {
+                float v1Axis = Input.GetAxis("P1Vertical");
+                float h1Axis = Input.GetAxis("P1Horizontal");
+                Vector2 player1direction = new Vector2(h1Axis, v1Axis);
+                player1.AddForce(player1direction.normalized * settings.player1speed);
+                float angle1 = Vector2.SignedAngle(new Vector2(player1.transform.up.x, player1.transform.up.y), player1.velocity);
+                if (player1.velocity.magnitude >= settings.zero || player1.velocity.magnitude <= -settings.zero)
+                    player1.AddTorque(angle1 * settings.player1angspd);
 
-            float v2Axis = Input.GetAxis("P2Vertical");
-            float h2Axis = Input.GetAxis("P2Horizontal");
-            Vector2 player2direction = new Vector2(h2Axis, v2Axis);
-            player2.AddForce(player2direction.normalized * settings.player2speed);
+                float v2Axis = Input.GetAxis("P2Vertical");
+                float h2Axis = Input.GetAxis("P2Horizontal");
+                Vector2 player2direction = new Vector2(h2Axis, v2Axis);
+                player2.AddForce(player2direction.normalized * settings.player2speed);
+                float angle2 = Vector2.SignedAngle(new Vector2(player2.transform.up.x, player2.transform.up.y), player2.velocity);
+                if (player2.velocity.magnitude >= settings.zero || player2.velocity.magnitude <= -settings.zero)
+                    player2.AddTorque(angle2 * settings.player2angspd);
+            }
         }
     }
 }

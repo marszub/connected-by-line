@@ -15,7 +15,12 @@ namespace Assets.Line
         public float player1speed;
         public float player2speed;
 
+        public float player1angspd;
+        public float player2angspd;
+
         public GameObject chain;
         public int chainLength;
+
+        public float zero;
     }
 }

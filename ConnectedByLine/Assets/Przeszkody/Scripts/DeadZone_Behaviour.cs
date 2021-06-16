@@ -20,12 +20,12 @@ public class DeadZone_Behaviour : MonoBehaviour
         // Debug.Log("OOOK");
         if (other.tag == "Player")
         {
-            GameManager.EndGame();
+            GameManager.instance.EndGame();
         }
         if (other.tag == "Coin")
         {
             Destroy(other.gameObject);
-            //game_Master
+            GameManager.instance.UpdateHP(1);
         }
     }
 }
