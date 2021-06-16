@@ -8,5 +8,12 @@ Two pirates are bound by a line and chased by the Kraken. You need to help them 
 ### Controls
 
 - ```Space``` - start
-- ```wasd``` - player 1 movement
-- ```arrows``` - player 2 movement
+- ```AWSD``` - player 1 movement
+- ```Arrow keys``` - player 2 movement
+
+### Authors
+- Marcin Szubert
+- Antoni Gradowski
+- Janusz Jakubiec
+- Łukasz Szubert
+- Hubert Czader
